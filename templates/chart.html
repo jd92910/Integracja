@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wykres danych</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Porównanie danych z dwóch tabel</h1>
+    <div id="chart"></div>
+    <script>
+        var df1 = {
+            x: {{ df1_dates | tojson }},
+            y: {{ df1_values | tojson }},
+            type: 'scatter',
+            name: 'Dane 1'
+        };
+
+        var df2 = {
+            x: {{ df2_dates | tojson }},
+            y: {{ df2_values | tojson }},
+            type: 'scatter',
+            name: 'Dane 2'
+        };
+
+        var data = [df1, df2];
+        Plotly.newPlot('chart', data);
+    </script>
+</body>
+</html>
